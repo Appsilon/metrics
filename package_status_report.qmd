@@ -1,0 +1,106 @@
+---
+title: "Pharmaverse Packages Status"
+author: "Sankhadeep Dutta"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+description: Provides latest updates on packages status
+format:
+  html:
+    page-layout: full
+    max-width: 1600px
+    mainfont: Maven Pro
+editor: visual
+theme:
+- styles/custom.scss
+resource_files:
+- .Rprofile
+- maintainer_diff/repo_data_utils.R
+- maintainer_diff/data_processing_utils.R
+- styles/colors.R
+- styles/colors.scss
+- styles/custom.scss
+- styles/theme.R
+- styles/utils.R
+---
+
+```{r, echo=FALSE, message=FALSE}
+box::use(
+  dplyr[arrange, group_by, mutate],
+  reactable[colDef, reactable],
+)
+box::use(
+  styles / colors[blue, navy, ice, yellow, rose],
+  styles / theme[theme],
+  styles / utils[add_opacity],
+)
+options(reactable.theme = theme)
+
+source("maintainer_diff/data_preparation.R")
+source("maintainer_diff/slack_updates.R")
+
+report <- maintainers_latest_activity |>
+  group_by(activity_recency) |>
+  arrange(timestamp) |>
+  mutate(
+    status = "",
+    timestamp = format(timestamp, "%Y-%m-%d %H:%M:%S"),
+    .before = 1
+  )
+
+report |>
+  reactable(
+    searchable = TRUE,
+    showPageSizeOptions = TRUE,
+    pageSizeOptions = c(10, 15, 30),
+    defaultPageSize = 15,
+    showPageInfo = FALSE,
+    striped = TRUE,
+    highlight = TRUE,
+    defaultColDef = colDef(vAlign = "center", headerVAlign = "center"),
+    columns = list(
+      activity_recency = colDef(
+        style = function(value) {
+          switch(
+            value,
+            "within a month" = list(color = blue[5], fontWeight = "bold"),
+            "within six months" = list(color = yellow[5], fontWeight = "bold"),
+            "more than six months" = list(color = rose[5], fontWeight = "bold")
+          )
+        }
+      ),
+      status = colDef(
+        width = 60,
+        header = "",
+        cell = function(value, index) {
+          activity_recency <- report[index, "activity_recency"]
+
+          if (activity_recency == "more than six months") {
+            return("\u274c")
+          } else if (activity_recency == "within six months") {
+            return("\u26a0\ufe0f")
+          } else if (activity_recency == "within a month") {
+            return("\u2705")
+          }
+        }
+      )
+    ),
+    rowStyle = function(index) {
+      activity_recency <- report[index, "activity_recency"]
+
+      if (activity_recency == "more than six months") {
+        list(
+          backgroundColor = add_opacity(rose[5], 15),
+          color = rose[2]
+        )
+      } else if (activity_recency == "within six months") {
+        list(
+          backgroundColor = add_opacity(yellow[5], 12),
+          color = yellow[1]
+        )
+      } else if (activity_recency == "within a month") {
+        list(
+          color = blue[2]
+        )
+      }
+    }
+  )
+```

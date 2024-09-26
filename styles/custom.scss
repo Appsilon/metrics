@@ -1,0 +1,27 @@
+@import 'colors';
+
+/*-- scss:rules --*/
+body {
+  background-color: map-get($colors, "navy-7");
+}
+
+h1 {
+  color: map-get($colors, "ice-1");
+}
+
+.description {
+  color: map-get($colors, "blue-2");
+}
+
+.quarto-title-meta-heading {
+  color: map-get($colors, "navy-1");
+}
+
+.quarto-title-meta-contents {
+  color: map-get($colors, "blue-2");
+}
+
+.Reactable {
+  border-radius: 12px;
+  overflow: hidden;
+}

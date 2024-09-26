@@ -1,0 +1,14 @@
+Package: PharmaStats
+Title: Pharmaverse Package Statistics and Updates
+Version: 1.0.0
+Authors@R: c(
+    person("Sankhadeep", "Dutta", , "sankhadeep.dutta@appsilon.com", role = c("aut", "cre")),
+    person("Fabian", "Hee", , "fabian.hee@appsilon.com", role = "ctb"),
+    person("Jakub", "Chojna", , "jakub.chojna@appsilon.com", role = "ctb")
+  )
+Description: Provides updates on the pharmaverse package maintainers and also 
+    provides valuable statistical insights on the packages.
+Depends: R (>= 4.4.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

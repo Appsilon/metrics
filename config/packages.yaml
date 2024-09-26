@@ -1,0 +1,72 @@
+---
+packages:
+  - name: admiral
+    repo: pharmaverse/admiral
+  - name: admiralonco
+    repo: pharmaverse/admiralonco
+  - name: admiralophtha
+    repo: pharmaverse/admiralophtha
+  - name: admiralvaccine
+    repo: pharmaverse/admiralvaccine
+  - name: cardinal
+    repo: pharmaverse/cardinal
+  - name: cards
+    repo: insightsengineering/cards
+  - name: chevron
+    repo: insightsengineering/chevron
+  - name: covtracer
+    repo: Genentech/covtracer
+  - name: datacutr
+    repo: pharmaverse/datacutr
+  - name: datasetjson
+    repo: atorus-research/datasetjson
+  - name: envsetup
+    repo: pharmaverse/envsetup
+  - name: ggsurvfit
+    repo: pharmaverse/ggsurvfit
+  - name: logrx
+    repo: pharmaverse/logrx
+  - name: metacore
+    repo: atorus-research/metacore
+  - name: metatools
+    repo: pharmaverse/metatools
+  - name: pharmaRTF
+    repo: atorus-research/pharmaRTF
+  - name: pharmaverseadam
+    repo: pharmaverse/pharmaverseadam
+  - name: pharmaversesdtm
+    repo: pharmaverse/pharmaversesdtm
+  - name: pkglite
+    repo: Merck/pkglite
+  - name: rhino
+    repo: Appsilon/rhino
+  - name: riskassessment
+    repo: pharmaR/riskassessment
+  - name: riskmetric
+    repo: pharmaR/riskmetric
+  - name: rlistings
+    repo: insightsengineering/rlistings
+  - name: rtables
+    repo: insightsengineering/rtables
+  - name: sdtmchecks
+    repo: pharmaverse/sdtmchecks
+  - name: teal
+    repo: insightsengineering/teal
+  - name: tern
+    repo: insightsengineering/tern
+  - name: tfrmt
+    repo: GSK-Biostatistics/tfrmt
+  - name: tfrmtbuilder
+    repo: GSK-Biostatistics/tfrmtbuilder
+  - name: thevalidatoR
+    repo: insightsengineering/thevalidatoR
+  - name: tidyCDISC
+    repo: Biogen-Inc/tidyCDISC
+  - name: tidytlg
+    repo: pharmaverse/tidytlg
+  - name: Tplyr
+    repo: atorus-research/Tplyr
+  - name: valtools
+    repo: phuse-org/valtools
+  - name: xportr
+    repo: atorus-research/xportr
