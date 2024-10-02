@@ -21,9 +21,15 @@ box::use(
     get_pr_reviewers
   ]
 )
+pharma_dir <- "data/packages/"
+nonpharma_dir <- "data/nonpharma/"
+pharma_file_paths <- paste0(pharma_dir, list.files(pharma_dir))
+nonpharma_file_paths <- paste0(nonpharma_dir, list.files(nonpharma_dir))
 
-package_list <- read_yaml("config/packages.yaml") |>
-  unlist(recursive = FALSE, use.names = FALSE)
+package_list <- map(pharma_file_paths, \(path) {
+  file_content <- read_yaml(path)
+  list(name = file_content$name, repo = file_content$repo)
+})
 package_names <- map(package_list, \(package) package[["name"]]) |>
   unlist()
 api_key <- Sys.getenv("GH_API_KEY")
